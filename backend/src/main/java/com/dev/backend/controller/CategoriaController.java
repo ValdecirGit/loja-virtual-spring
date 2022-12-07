@@ -13,34 +13,34 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dev.backend.entity.Estado;
-import com.dev.backend.service.EstadoService;
+import com.dev.backend.entity.Categoria;
+import com.dev.backend.service.CategoriaService;
 
 @RestController // responde requisicoes do tipo rest
-@RequestMapping("/api/estado") // rota padrao para todos os endpoints
-public class EstadoController {
+@RequestMapping("/api/categoria") // rota padrao para todos os endpoints
+public class CategoriaController {
     
     @Autowired // para o Spring fazer o gerenciamento automatico de todas as regras de negocio do service
-    private EstadoService estadoService;
+    private CategoriaService categoriaService;
 
     @GetMapping("/") // notacao para buscar dados 
-    public List<Estado> buscarTodos() {
-        return estadoService.buscarTodos(); // retorno direto pq o metodo tbm retorna uma lista
+    public List<Categoria> buscarTodos() {
+        return categoriaService.buscarTodos(); // retorno direto pq o metodo tbm retorna uma lista
     }
     
     @PostMapping("/") // notacao para inserir dados
-    public Estado inserir(@RequestBody Estado estado) {
-        return estadoService.inserir(estado);
+    public Categoria inserir(@RequestBody Categoria categoria) {
+        return categoriaService.inserir(categoria);
     }
 
     @PutMapping("/") 
-    public Estado alterar(@RequestBody Estado estado) {
-        return estadoService.alterar(estado);
+    public Categoria alterar(@RequestBody Categoria categoria) {
+        return categoriaService.alterar(categoria);
     }
 
     @DeleteMapping("/{id}") 
     public ResponseEntity<Void> excluir(@PathVariable("id") Long id) {
-        estadoService.excluir(id);
+        categoriaService.excluir(id);
         return ResponseEntity.ok().build();
     }
     
